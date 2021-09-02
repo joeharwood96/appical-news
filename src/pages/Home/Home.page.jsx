@@ -5,6 +5,7 @@ import './Home.scss';
 import NewsFeed from '../../components/NewsFeed/NewsFeed.component';
 
 const Home = () => {
+    
 
     return (
         <div className="home-wrapper">
