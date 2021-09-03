@@ -2,18 +2,15 @@ import React from 'react';
 import './NewsCard.scss';
 
 const NewsCard = ({ newsData, index }) => {
-
     return (
-        <div className={`newscard-wrapper ${index === 0 ? "item-1" : null}` }>
-            <div class="newscard-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage})`}}></div>
+        <a className={`newscard-wrapper ${index === 0 ? "item-1" : null}` } href="https://design.tutsplus.com/articles/envato-tuts-community-challenge-created-by-you-july-edition--cms-26724">
+            <div className="newscard-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage})`}}></div>
             <article>
-                <div>
-                    <h1>{newsData.title}</h1>
-                    <p>{newsData.description}</p>
-                </div>
+                <h1>{newsData.title}</h1>
+                <p>{newsData.description.substring(0, 250)}</p>
                 <span>{newsData.author}</span>
             </article>
-        </div>
+        </a>
     )
 }
 
