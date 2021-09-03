@@ -1,0 +1,18 @@
+.header {
+    padding: 0 2rem;
+    display: flex;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 6%);
+
+    &-logo {
+        width: 180px;
+        height: 68px;
+        padding: 8px 0;
+    }
+
+    &-title {
+        color: #ff3349;
+        margin-left: 1rem;
+    }
+}
