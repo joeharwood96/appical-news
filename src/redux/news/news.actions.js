@@ -7,10 +7,15 @@ export const fetchTopHeadlines = () => dispatch => {
     dispatch(requestStarted())
     services.getData(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
         .then(data => {
+            console.log(data);
             if(data.status === 'ok') {
                 dispatch(setTopHeadlines(data.articles));
-                dispatch(setSearchArticles(null));
+            } else {
+                dispatch(setError(data));
             }
+        })
+        .catch(error => {
+            dispatch(setError(error));
         });
 }
 
@@ -23,18 +28,29 @@ export const setTopHeadlines = (data) => {
 
 export const searchArticles = (searchQuery) => dispatch => {
     dispatch(requestStarted())
-    services.getData(`https://newsapi.org/v2/everything?q=${searchQuery}&from=2021-09-04&sortBy=popularity&apiKey=${apiKey}`)
+    services.getData(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=popularity&apiKey=${apiKey}`)
         .then(data => {
             if(data.status === 'ok') {
                 dispatch(setSearchArticles(data.articles));
-                dispatch(setTopHeadlines(null));
+            } else {
+                dispatch(setError(data));
             }
+        })
+        .catch(error => {
+            dispatch(setError(error));
         });
 }
 
 export const setSearchArticles = (data) => {
     return {
         type: NewsActionTypes.SET_SEARCH_ARTICLES,
+        payload: data
+    }
+}
+
+export const setError = (data) => {
+    return {
+        type: NewsActionTypes.SET_ERRORS,
         payload: data
     }
 }

@@ -19,14 +19,16 @@ const newsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 topHeadlines: action.payload,
                 isLoading: false,
-                errors: null
+                errors: null,
+                searchArticles: null
             }
         case NewsActionTypes.SET_SEARCH_ARTICLES:
             return {
                 ...state,
                 searchArticles: action.payload,
                 isLoading: false,
-                errors: null
+                errors: null,
+                topHeadlines: null
             }
         case NewsActionTypes.SET_ERRORS:
             return {
