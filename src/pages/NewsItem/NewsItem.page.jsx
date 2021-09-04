@@ -8,7 +8,7 @@ import { AiOutlineLink } from 'react-icons/ai';
 const NewsItem = () => {
     const location = useLocation()
     const { newsData } = location.state
-    console.log(newsData)
+
     return (
         <div className='news-item-wrapper'>
             <header>
