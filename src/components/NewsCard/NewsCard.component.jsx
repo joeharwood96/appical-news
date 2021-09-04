@@ -13,7 +13,7 @@ const NewsCard = ({ newsData, index }) => {
             <div className="newscard-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage})`}}></div>
             <article>
                 <h1>{newsData.title}</h1>
-                <p>{newsData.description.substring(0, 250)}</p>
+                <p>{newsData.description && newsData.description.substring(0, 250)}</p>
                 <span>{newsData.author}</span>
             </article>
         </Link>

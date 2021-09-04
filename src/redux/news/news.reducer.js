@@ -1,7 +1,10 @@
 import NewsActionTypes from './news.types';
 
 const INITIAL_STATE = {
-    topHeadlines: null
+    topHeadlines: null,
+    searchArticles: null,
+    loading: false,
+    errors: null
 };
 
 const newsReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +14,11 @@ const newsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 topHeadlines: action.payload
             };
+        case NewsActionTypes.FETCH_SEARCH_ARTICLES:
+            return {
+                ...state,
+                searchArticles: action.payload
+            }
         default: 
             return state;
     }
