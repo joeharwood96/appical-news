@@ -4,17 +4,38 @@ import { connect } from 'react-redux';
 
 // Components
 import NewsFeed from '../../components/NewsFeed/NewsFeed.component';
+import Loader from "react-loader-spinner";
 
 const SearchResult = (props) => {
     const { news } = props;
-    const { searchArticles } = news;
+    const { searchArticles, isLoading } = news;
 
     return (
         <div className="search-result-wrapper">
             <header>
                 <h1>Search Result</h1>
             </header>
-            <NewsFeed articles={searchArticles}/>
+            {
+                isLoading ? 
+                <div className="no-results">
+                    <Loader 
+                        type="Puff"
+                        color="#ff3349"
+                        height={100}
+                        width={100}
+                    />
+                </div>
+                :
+                <NewsFeed articles={searchArticles}/>
+            }
+            {
+                !isLoading && searchArticles && searchArticles.length === 0 ?
+                <div className="no-results">
+                    <p>No results found for your search.</p> 
+                </div>
+                :
+                null
+            }
         </div>
     )
 }
