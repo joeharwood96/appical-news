@@ -7,9 +7,8 @@ import { useHistory } from 'react-router';
 
 const Search = (props) => {
     const [searchString, setSearchString] = useState('');
-    const { searchArticles, news } = props;
+    const { searchArticles } = props;
     const history = useHistory();
-    console.log(news);
 
     const handleSubmit = () => {
         if(searchString) {

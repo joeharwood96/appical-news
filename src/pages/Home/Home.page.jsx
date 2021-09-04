@@ -5,12 +5,13 @@ import { fetchTopHeadlines } from '../../redux/news/news.actions';
 
 // Components
 import NewsFeed from '../../components/NewsFeed/NewsFeed.component';
+import Loader from "react-loader-spinner";
 
 
 const Home = (props) => {
     const { news, fetchTopHeadlines } = props;
-    const { topHeadlines } = news;
-    
+    const { topHeadlines, isLoading } = news;
+
     useEffect(() => {
         function getData() {
             fetchTopHeadlines();
@@ -27,7 +28,27 @@ const Home = (props) => {
             <header>
                 <h1>Top Headlines</h1>
             </header>
-            <NewsFeed articles={topHeadlines}/>
+            {
+                isLoading ? 
+                <div className="no-results">
+                    <Loader 
+                        type="Puff"
+                        color="#ff3349"
+                        height={100}
+                        width={100}
+                    />
+                </div>
+                :
+                <NewsFeed articles={topHeadlines}/>
+            }
+            {
+                !isLoading && topHeadlines && topHeadlines.length === 0 ?
+                <div className="no-results">
+                    <p>No results top headlines found.</p> 
+                </div>
+                :
+                null
+            }
         </div>
     )
 }
