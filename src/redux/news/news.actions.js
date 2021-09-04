@@ -7,7 +7,6 @@ export const fetchTopHeadlines = () => dispatch => {
     dispatch(requestStarted())
     services.getData(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
         .then(data => {
-            console.log(data);
             if(data.status === 'ok') {
                 dispatch(setTopHeadlines(data.articles));
             } else {
