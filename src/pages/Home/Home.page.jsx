@@ -10,7 +10,7 @@ import Loader from "react-loader-spinner";
 
 const Home = (props) => {
     const { news, fetchTopHeadlines } = props;
-    const { topHeadlines, isLoading } = news;
+    const { topHeadlines, isLoading, errors } = news;
 
     useEffect(() => {
         function getData() {
@@ -25,6 +25,12 @@ const Home = (props) => {
 
     return (
         <div className="home-wrapper">
+            {
+                errors ?
+                <div class="error">{errors.message}</div>
+                :
+                null
+            }
             <header>
                 <h1>Top Headlines</h1>
             </header>

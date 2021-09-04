@@ -8,10 +8,16 @@ import Loader from "react-loader-spinner";
 
 const SearchResult = (props) => {
     const { news } = props;
-    const { searchArticles, isLoading } = news;
+    const { searchArticles, isLoading, errors } = news;
 
     return (
         <div className="search-result-wrapper">
+            {
+                errors ?
+                <div class="error">{errors.message}</div>
+                :
+                null
+            }
             <header>
                 <h1>Search Result</h1>
             </header>
