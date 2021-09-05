@@ -1,6 +1,7 @@
 import React from 'react';
 import './SearchResult.scss';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 // Components
 import NewsFeed from '../../components/NewsFeed/NewsFeed.component';
@@ -9,6 +10,8 @@ import Loader from "react-loader-spinner";
 const SearchResult = (props) => {
     const { news } = props;
     const { searchArticles, isLoading, errors } = news;
+    const location = useLocation();
+    const { searchString } = location.state
 
     return (
         <div className="search-result-wrapper">
@@ -19,7 +22,7 @@ const SearchResult = (props) => {
                 null
             }
             <header>
-                <h1>Search Result</h1>
+                <h1>Search Result: {searchString}</h1>
             </header>
             {
                 isLoading ? 

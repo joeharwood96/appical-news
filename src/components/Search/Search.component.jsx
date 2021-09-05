@@ -12,7 +12,10 @@ const Search = (props) => {
 
     const handleSubmit = () => {
         if(searchString) {
-            history.push('/searchResult');
+            history.push({
+                pathname: '/searchResult',
+                state: { searchString }
+            })
             searchArticles(searchString);
             setSearchString('');
         }
@@ -20,7 +23,10 @@ const Search = (props) => {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && searchString) {
-            history.push('/searchResult');
+            history.push({
+                pathname: '/searchResult',
+                state: { searchString }
+            })
             searchArticles(searchString);
             setSearchString('');
         }
