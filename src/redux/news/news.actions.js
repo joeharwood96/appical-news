@@ -3,12 +3,12 @@ import services from '../../utils/services';
 
 const apiKey = "4bc0d1dca3fb4213802d64b55af60012";
 
-export const fetchTopHeadlines = () => dispatch => {
+export const fetchTopHeadlines = (page = 1) => dispatch => {
     dispatch(requestStarted())
-    services.getData(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
+    services.getData(`https://newsapi.org/v2/top-headlines?country=us&page=${page}&apiKey=${apiKey}`)
         .then(data => {
             if(data.status === 'ok') {
-                dispatch(setTopHeadlines(data.articles));
+                dispatch(setTopHeadlines(data));
             } else {
                 dispatch(setError(data));
             }
@@ -25,12 +25,12 @@ export const setTopHeadlines = (data) => {
     }
 }
 
-export const searchArticles = (searchQuery) => dispatch => {
+export const searchArticles = (searchQuery, page = 1) => dispatch => {
     dispatch(requestStarted())
-    services.getData(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=popularity&apiKey=${apiKey}`)
+    services.getData(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=popularity&page=${page}&apiKey=${apiKey}`)
         .then(data => {
             if(data.status === 'ok') {
-                dispatch(setSearchArticles(data.articles));
+                dispatch(setSearchArticles(data));
             } else {
                 dispatch(setError(data));
             }

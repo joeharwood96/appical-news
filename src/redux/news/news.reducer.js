@@ -2,7 +2,7 @@ import NewsActionTypes from './news.types';
 
 const INITIAL_STATE = {
     topHeadlines: null,
-    searchArticles: null,
+    searchResults: null,
     isLoading: false,
     errors: null
 };
@@ -20,12 +20,12 @@ const newsReducer = (state = INITIAL_STATE, action) => {
                 topHeadlines: action.payload,
                 isLoading: false,
                 errors: null,
-                searchArticles: null
+                searchResults: null
             }
         case NewsActionTypes.SET_SEARCH_ARTICLES:
             return {
                 ...state,
-                searchArticles: action.payload,
+                searchResults: action.payload,
                 isLoading: false,
                 errors: null,
                 topHeadlines: null
