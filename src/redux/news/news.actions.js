@@ -25,7 +25,7 @@ export const setTopHeadlines = (data) => {
     }
 }
 
-export const searchArticles = (searchQuery, page = 1) => dispatch => {
+export const searchArticles = (searchQuery, page) => dispatch => {
     dispatch(requestStarted())
     services.getData(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=popularity&page=${page}&apiKey=${apiKey}`)
         .then(data => {
