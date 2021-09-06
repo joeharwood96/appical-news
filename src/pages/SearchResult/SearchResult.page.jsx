@@ -54,6 +54,7 @@ const SearchResult = (props) => {
                     getData={searchArticles} 
                     pageSize={20}
                     totalResults={searchResults.totalResults}
+                    searchString={searchString}
                 />
                 :
                 null

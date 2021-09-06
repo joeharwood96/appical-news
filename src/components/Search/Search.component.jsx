@@ -16,7 +16,7 @@ const Search = (props) => {
                 pathname: '/searchResult',
                 state: { searchString }
             })
-            searchArticles(searchString);
+            searchArticles(searchString, 1);
             setSearchString('');
         }
     }
@@ -27,7 +27,7 @@ const Search = (props) => {
                 pathname: '/searchResult',
                 state: { searchString }
             })
-            searchArticles(searchString);
+            searchArticles(searchString, 1);
             setSearchString('');
         }
     }
