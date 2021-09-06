@@ -2,14 +2,16 @@ import React from 'react';
 import './SearchResult.scss';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { searchArticles } from '../../redux/news/news.actions';
 
 // Components
 import NewsFeed from '../../components/NewsFeed/NewsFeed.component';
 import Loader from "react-loader-spinner";
+import Pagination from '../../components/Pagination/Pagination';
 
 const SearchResult = (props) => {
-    const { news } = props;
-    const { searchArticles, isLoading, errors } = news;
+    const { news, searchArticles } = props;
+    const { isLoading, errors, searchResults } = news;
     const location = useLocation();
     const { searchString } = location.state
 
@@ -35,13 +37,24 @@ const SearchResult = (props) => {
                     />
                 </div>
                 :
-                <NewsFeed articles={searchArticles}/>
+                <NewsFeed articles={searchResults && searchResults.articles}/>
             }
             {
-                !isLoading && searchArticles && searchArticles.length === 0 ?
+                !isLoading && searchResults && searchResults.articles.length === 0 ?
                 <div className="no-results">
                     <p>No results found for your search.</p> 
                 </div>
+                :
+                null
+            }
+            {
+                searchResults && searchResults.articles.length > 0 ? 
+                <Pagination 
+                    articles={searchResults.articles}
+                    getData={searchArticles} 
+                    pageSize={20}
+                    totalResults={searchResults.totalResults}
+                />
                 :
                 null
             }
@@ -53,4 +66,4 @@ const mapStateToProps = ({ news }) => ({
     news
 })
 
-export default connect(mapStateToProps, {})(SearchResult);
+export default connect(mapStateToProps, { searchArticles })(SearchResult);
