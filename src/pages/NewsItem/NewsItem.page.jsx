@@ -22,7 +22,7 @@ const NewsItem = () => {
             <article>
                 <p>Source: {newsData.source && newsData.source.name}</p>
                 <p>{newsData.description}</p>
-                <div className="news-item-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage})`}}></div>
+                <div className="news-item-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage ? newsData.urlToImage : 'https://i.stack.imgur.com/y9DpT.jpg'})`}}></div>
                 <p>{newsData.content}</p>
             </article>
         </div>

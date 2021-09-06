@@ -10,7 +10,7 @@ const NewsCard = ({ newsData, index }) => {
                 state: { newsData }
             }}
         >
-            <div className="newscard-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage})`}}></div>
+            <div className="newscard-wrapper-thumb" style={{backgroundImage: `url(${newsData.urlToImage ? newsData.urlToImage : 'https://i.stack.imgur.com/y9DpT.jpg'})`}}></div>
             <article>
                 <h1>{newsData.title}</h1>
                 <p>{newsData.description && newsData.description.substring(0, 250)}</p>
