@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './NewsItem.scss';
 import { useLocation } from 'react-router-dom';
 import moment from 'moment';
@@ -8,6 +8,10 @@ import { AiOutlineLink } from 'react-icons/ai';
 const NewsItem = () => {
     const location = useLocation()
     const { newsData } = location.state
+
+    useEffect(() => {
+        window.scrollTo({ top: '0px' });
+    }, [])
 
     return (
         <div className='news-item-wrapper'>
